@@ -1,0 +1,77 @@
+spring:
+  profiles:
+    active: prod
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      minimum-idle: 3
+      maximum-pool-size: 10
+      max-lifetime: 30000
+      connection-test-query: SELECT 1
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 500
+        min-idle: 0
+    timeout: 2000
+    lettuce:
+      shutdown-timeout: 0
+
+#开发平台总路由入口
+dp:
+  baseRoute: /dp
+  uploadPath: /home/app/services/dah-prod/uploadFiles
+  exportPath: /home/app/services/dah-prod/exportFiles
+  errorResultPath: /home/app/services/dah-prod/uploadFiles/errorResultFiles
+  uploadUrl: http://file.dah.qrqy.net/uploadFiles
+  exportUrl: http://file.dah.qrqy.net/exportFiles
+  errorResultUrl: http://file.dah.qrqy.net/uploadFiles/errorResultFiles
+
+#通信body加解密
+crypto:
+  desSecretKey: b2c17b46e2b1415392aab5a82869856c
+  desIv: 61960842
+  force: true
+  excludeRoutes:
+    - /upload
+
+# 对象存储
+#ali:
+#  oss:
+#    endpoint: oss-cn-beijing.aliyuncs.com
+#    accessKeyId: "<your accessKeyId>"
+#    accessKeySecret: "<your accessKeySecret>"
+#    publicBucket: demo-avatar
+#    privateBuckte: demo-avatar
+#tencent:
+#  cos:
+#    endpoint: cos.ap-beijing.myqcloud.com
+#    secretId: AKID97qVx9vb3PaXunCzcy3f7TaSYPM3feec
+#    secretKey: rRo8EqBNQRfwhJgDtc6OdNtAZhbFctVx
+#    region: ap-beijing
+#    publicBucket: cos-public-1304133186
+#    privateBuckte: cos-private-1304133186
+qiniu:
+  kodo:
+    accessKey: T-U7s_lQBEsUscI4LcONmOtF85bOtWI7iacsuzW1
+    secretKey: p5aO4SbwrasMzTfJkf9vdg7kU1WHmhCPJ6aiTAjf
+    publicDomain: dongaohui-file.qrqy.net
+    privateDomain: qvhweypu1.hb-bkt.clouddn.com
+
+logging:
+  level:
+    root: INFO
+

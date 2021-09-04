@@ -1,0 +1,8 @@
+server:
+  port: 8087
+
+spring:
+  datasource:
+    url: jdbc:mysql://122.51.185.50:3306/dahproddb?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
+    username: dahproddb
+    password: W5MYaWkx6FEBMcfr
